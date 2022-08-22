@@ -1,0 +1,157 @@
+/* Dafault settings ///////////////////////////////////////////////////////////////////////////////*/
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'DynaPuff', cursive;
+    font-weight: 400;
+    font-size: 5rem;
+    letter-spacing: 5px;
+    color: #dee2e6;
+    background-color: #212529;
+    /* background-color: #06d6a0; */
+}
+
+/* Navigation //////////////////////////////////////////////////////////////////////////////////////*/
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 2.5rem;
+}
+
+#start-again-btn {
+    font-family: 'DynaPuff', cursive;
+    display: inline-block;
+    padding: 1.5rem 4.5rem;
+    font-size: 4rem;
+    border: none;
+    outline: none;
+    transition: all .3s ease-in;
+}
+
+#start-again-btn:hover {
+    cursor: pointer;
+    transform: scale(0.95) translateY(-5px);
+    background-color: #3a86ff;
+    color: #fff;
+}
+
+#nav-info {
+    font-size: 2rem;
+}
+
+/* Header ////////////////////////////////////////////////////////////////////////////////////////*/
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+#header-title {
+    font-size: 8rem;
+    font-weight: 900;
+}
+
+#hidden-number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 8rem;
+    height: 15rem;
+    width: 20rem;
+    background-color: #3a86ff;
+    margin-top: 2rem;
+    transition: all .3s ease-in;
+}
+
+#hidden-number-text {
+    transition: all .3s ease-in;
+}
+
+#hidden-number:hover #hidden-number-text {
+    transform: rotate(360deg) scale(1.3);
+
+}
+
+/* Main //////////////////////////////////////////////////////////////////////////////////////////*/
+main {
+    display: flex;
+    justify-content: space-around;
+    padding: 4rem;
+    margin-bottom: 4rem;
+}
+
+.input-section {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#guess-input {
+    background: none;
+    border: 4px solid #3a86ff;
+    padding: 1.5rem;
+    outline: none;
+    font-family: inherit;
+    color: #fff;
+    text-align: center;
+    font-size: 6rem;
+    font-weight: 500;
+    width: 25rem;
+}
+
+#check-btn {
+    margin-top: 2rem;
+    font-family: inherit;
+    display: inline-block;
+    padding: 1.5rem 3.5rem;
+    font-size: 4rem;
+    border: none;
+    outline: none;
+    transition: all .3s ease-in;
+}
+
+#check-btn:hover {
+    cursor: pointer;
+    transform: scale(0.95);
+    background-color: #06d6a0;
+    color: #fff;
+}
+
+.info-section {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    font-size: 3rem;
+    margin-left: 25rem;
+}
+
+#message {
+    color: #f9c74f;
+}
+
+#score-label {
+    color: #90be6d;
+}
+
+#highscore-label {
+    color: #43aa8b;
+}
+
+.info-section span {
+    font-weight: 900;
+}
