@@ -12,26 +12,32 @@ const title = document.getElementById('header-title');
 
 
 // Global variables
+let trials = 20;
 let game_on;
-let trials;
+let score;
 let highscore;
 let randomNumber;
 
 const startNewGame = function () {
     inputNumber.disabled = false;
     game_on = true;
-    trials = 20;
-    randomNumber = Math.floor(Math.random() * 100) + 1;
+    score = trials;
+    randomNumber = Math.floor(Math.random() * trials) + 1;
     highscore = localStorage.getItem('guess-number-highscore') === null ? 0 : localStorage.getItem('guess-number-highscore');
 
+    hiddenNumberBox.classList.remove('hidden-number-win');
     message.textContent = "🛫 Start guessing...";
-    scoreInfo.textContent = `💯 Score: ${trials}`;
-    highscoreInfo.textContent = `🥇 Highscore: ${highscore}`;
+    updateUI();
 
     inputNumber.value = "";
     hiddenNumberText.textContent = "?";
     hiddenNumberBox.style.backgroundColor = '#3a86ff';
     title.style.color = '#fff'
+};
+
+const updateUI = function () {
+    highscoreInfo.textContent = `🥇 Highscore: ${highscore}`;
+    scoreInfo.textContent = `💯 Score: ${score}`;
 };
 
 const handleTheGame = function () {
@@ -43,24 +49,25 @@ const handleTheGame = function () {
     }
 
     if (Number(inputNumber.value) === randomNumber) {
-        trials--;
+        score--;
+        updateUI();
         handleTheWin();
         return;
     }
 
     if (Number(inputNumber.value) > randomNumber) {
         message.textContent = "Too High!";
-        trials--;
+        score--;
     }
 
     if (Number(inputNumber.value) < randomNumber) {
         message.textContent = "Too Low!";
-        trials--;
+        score--;
     }
 
-    if (trials === 0) handleTheLose();
+    if (score === 0) handleTheLose();
 
-    scoreInfo.textContent = `💯 Score: ${trials}`;
+    updateUI();
 
 };
 
@@ -69,12 +76,13 @@ const handleTheWin = function () {
     game_on = false;
     hiddenNumberText.textContent = randomNumber;
     hiddenNumberBox.style.backgroundColor = '#55a630';
+    hiddenNumberBox.classList.add('hidden-number-win');
     title.style.color = '#55a630'
     message.textContent = "You won! Congratulations!"
+    updateUI();
 
-    if (trials > highscore) {
+    if (score > highscore) {
         saveHighscoreInLocalStorage();
-        highscoreInfo.textContent = `🥇 Highscore: ${highscore}`;
     }
 };
 
@@ -88,7 +96,7 @@ const handleTheLose = function () {
 };
 
 const saveHighscoreInLocalStorage = function () {
-    localStorage.setItem('guess-number-highscore', trials);
+    localStorage.setItem('guess-number-highscore', score);
 };
 
 // Event Listeners
